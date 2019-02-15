@@ -65,6 +65,9 @@ Plugin 'jreybert/vimagit'
 " 17. tig
 Plugin 'iberianpig/tig-explorer.vim'
 
+" 18. Syntastic
+Plugin 'vim-syntastic/syntastic'
+
 "-------------------------------------------------------------------
 " Vim Color
 "-------------------------------------------------------------------
@@ -507,6 +510,29 @@ nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
 
 " open tig blame with current file
 nnoremap <Leader>b :TigBlame<CR>
+
+"=====================================================================
+"-- Syntastic
+"=====================================================================
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+execute pathogen#infect()
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+"每次自动调用 :SyntasticSetLocList, 将错误覆盖 **quickfix**
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+map <F2> :SyntasticToggleMode<CR>
 
 "=====================================================================
 " Function Experiment
