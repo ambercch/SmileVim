@@ -45,8 +45,6 @@ Plugin 'wesleyche/Trinity'
 " 10. Tagbar is a Vim plugin that provides an easy way to browse the tags of
 "     the current file and get an overview of its structure
 Plugin 'majutsushi/tagbar'
-" Skip YouCompleteMe first
-"Bundle 'Valloric/YouCompleteMe'
 " 11. A Vim plugin which shows a git diff in the 'gutter' (sign column).
 Plugin 'airblade/vim-gitgutter'
 " 12. Open file and go to line via ':' symbol, e.g. file.txt:123
@@ -66,7 +64,10 @@ Plugin 'jreybert/vimagit'
 Plugin 'iberianpig/tig-explorer.vim'
 
 " 18. Syntastic
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
+
+" 19. Youcompeleteme
+Plugin 'Valloric/YouCompleteMe'
 
 "-------------------------------------------------------------------
 " Vim Color
@@ -523,16 +524,34 @@ nnoremap <Leader>b :TigBlame<CR>
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 
-execute pathogen#infect()
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"execute pathogen#infect()
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 "每次自动调用 :SyntasticSetLocList, 将错误覆盖 **quickfix**
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-map <F2> :SyntasticToggleMode<CR>
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 1
+"map <F2> :SyntasticToggleMode<CR>
+
+"=====================================================================
+" Youcompelete
+"=====================================================================
+"let g:ycm_use_clangd = "Always"
+"let g:ycm_clangd_binary_path = "/home/henry/ycm_temp/llvm_root_dir"
+let g:syntastic_java_checkers = []
+
+let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'nerdtree' : 1,
+      \}
+
 
 "=====================================================================
 " Function Experiment

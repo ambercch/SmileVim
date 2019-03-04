@@ -22,6 +22,18 @@
    B. Set the color scheme to colorscheme on vimrc, like it:
       + colorscheme pink-moon
    ```
+4. Install youcompelete:
+   ```
+   A. [Full Guide](https://valloric.github.io/YouCompleteMe/)
+   B. Check version:
+      After you have made sure that you have Vim 7.4.1578+, type the following in Vim: :echo has('python') || has('python3'). The output should be 1. If it's 0, then get a version of Vim with Python support.
+   C.1. Download [libclan](http://releases.llvm.org/download.html)(Use "Pre-Built Binaries")
+   D.2. (Recommend) Follow it:
+        $ sudo apt install build-essential cmake python3-dev
+        $ vim +PluginInstall
+        $ cd ~/.vim/bundle/YouCompleteMe
+        $ python3 install.py --clang-completer --java-completer 
+   ```
 
 ## Other script
 1. [fvf](https://github.com/gitdemonic/SmileVim/tree/master/script/fzf) is powerful search tool, I upload some script for git log, find file, and search keywork,
