@@ -2,6 +2,7 @@
 function parse_git_branch() {
 #    TAGS=`git describe --tags 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
     local local_dir=`pwd`
+    local SYMBOL_SUN=$'\xf0\x9f\x94\x85'
     local INPUT_FILE_PREFIX='LA.UM.6.2'
 
     if [[ $local_dir == *"${INPUT_FILE_PREFIX}"* ]] || [ $(ls $local_dir/${INPUT_FILE_PREFIX}* 2>/dev/null | wc -l) == 1 ]; then
@@ -12,7 +13,7 @@ function parse_git_branch() {
         TAGS=`git --git-dir=${local_dir}/.git --work-tree=${local_dir} describe --tags`
         if [ ! "${TAGS}" == "" ]
         then
-            echo "[${TAGS}]"
+            echo -e "${SYMBOL_SUN}[${TAGS}]"
         else
             echo ""
         fi
@@ -95,7 +96,7 @@ ${SYMBOL_SUN}${R}${BLUE_BOLD}[\u]\
     else
         export PS1="${debian_chroot:+($debian_chroot)}\
 ${SYMBOL_SUN}${R}${BLUE_BOLD}[\u]\
-${R}${LIGHT_RED}${SYMBOL_SUN}\`parse_git_branch\`${R}\
+${R}${LIGHT_RED}\`parse_git_branch\`${R}\
  ${R}${WHITE}${DIRNAME_DIR}/${R}${LIGHT_RED}${U}\W${R} ${WHITE}\\$\[$(tput sgr0)\]${R}\
 \n${BLUE}${R}"${NEXT_LINE_SYMBOL}${R}
     fi
