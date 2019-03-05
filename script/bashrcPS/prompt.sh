@@ -93,6 +93,11 @@ function _set_prompt () {
 ${SYMBOL_SUN}${R}${BLUE_BOLD}[\u]\
  ${R}${WHITE}\W${R} \\$\[$(tput sgr0)\]\
 \n${BLUE}${R}"${NEXT_LINE_SYMBOL}${R}
+    elif [[ $PWD != *"${HOME}"* ]]; then
+        export PS1="${debian_chroot:+($debian_chroot)}\
+${SYMBOL_SUN}${R}${BLUE_BOLD}[\u]\
+ ${R}${WHITE}\w${R} \\$\[$(tput sgr0)\]\
+\n${BLUE}${R}"${NEXT_LINE_SYMBOL}${R}
     else
         export PS1="${debian_chroot:+($debian_chroot)}\
 ${SYMBOL_SUN}${R}${BLUE_BOLD}[\u]\
